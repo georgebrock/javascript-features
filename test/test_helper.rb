@@ -1,4 +1,4 @@
 require 'shoulda'
-require 'redgreen'
+require 'redgreen' unless ENV["TM_PID"]
 
 require 'javascript_features'
