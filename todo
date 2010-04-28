@@ -1,0 +1,8 @@
+- Minify the compiled scripts
+- Rake task for compilation (on deploy)
+- Middleware for compilation (in dev)
+
+- Handle use_javascript_for calls in templates used by XHR requests
+
+- Rails generator for new features
+- Readme file
