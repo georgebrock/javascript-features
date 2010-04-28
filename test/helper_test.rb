@@ -1,4 +1,3 @@
-require 'javascript_features/helper'
 require File.join(File.dirname(__FILE__), *%w[test_helper])
 
 class HelperTest < Test::Unit::TestCase
