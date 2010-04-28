@@ -8,3 +8,7 @@ Rake::TestTask.new do |t|
 end
 
 task :default => ["test"]
+
+task :gem do
+  exec 'gem build javascript_features.gemspec'
+end
