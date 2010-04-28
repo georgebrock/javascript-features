@@ -1,1 +1,2 @@
 require 'shoulda'
+require 'redgreen'
