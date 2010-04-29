@@ -4,4 +4,5 @@
 - Handle use_javascript_for calls in templates used by XHR requests
 
 - Rails generator for new features
+- Test helper to JSLint the feature files
 - Readme file
