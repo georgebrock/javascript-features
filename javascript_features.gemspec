@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.6'
   s.summary = 'Structured, unobtrusive JavaScript for Rails applications'
 
+  s.add_dependency('jsmin')
+
   s.add_development_dependency('shoulda')
   s.add_development_dependency('redgreen')
 end

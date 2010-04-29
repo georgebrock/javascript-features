@@ -1,4 +1,3 @@
-- Minify the compiled scripts
 - Rake task for compilation (on deploy)
 - Middleware for compilation (in dev)
 
