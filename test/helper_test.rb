@@ -26,4 +26,18 @@ class HelperTest < Test::Unit::TestCase
       assert_equal "", javascript_feature_classes
     end
   end
+
+  context 'including the packaged JavaScript' do
+    setup{ @script_tag = include_javascript_features }
+    should 'write a script tag containing the correct URL' do
+      assert_match %r{/javascripts/packaged/main\.js}, @script_tag
+    end
+  end
+
+  context 'including an alternative JavaScript package' do
+    setup{ @script_tag = include_javascript_features(:alternative) }
+    should 'write a script tag containing the correct URL' do
+      assert_match %r{/javascripts/packaged/alternative\.js}, @script_tag
+    end
+  end
 end

@@ -10,5 +10,9 @@ module JavascriptFeatures
       (@javascript_features || []).uniq.map{ |feature| "with-js-#{feature.downcase}" }.join(" ")
     end
 
+    def include_javascript_features(package = 'main')
+      %Q{<script type="text/javascript" src="/javascripts/packaged/#{package}.js"></script>}
+    end
+
   end
 end
