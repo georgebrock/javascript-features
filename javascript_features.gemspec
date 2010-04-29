@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('shoulda')
   s.add_development_dependency('redgreen')
   s.add_development_dependency('harmony')
+  s.add_development_dependency('rack-test')
 end
