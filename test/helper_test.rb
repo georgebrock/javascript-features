@@ -3,10 +3,53 @@ require File.join(File.dirname(__FILE__), *%w[test_helper])
 class HelperTest < Test::Unit::TestCase
   include JavascriptFeatures::Helper
 
-  context "when a JavaScript feature is enabled" do
-    setup{ use_javascript_for "something" }
+  class TestRequest
+    def initialize(options)
+      @xhr = options[:xhr]
+    end
+
+    def xhr?
+      @xhr
+    end
+
+    def xml_http_request?
+      @xhr
+    end
+  end
+
+  class TestResponse
+    attr_accessor :headers
+    def initialize
+      @headers = {'Content-Type' => 'text/html'}
+    end
+  end
+
+  context "when a JavaScript feature is enabled during a normal request" do
+    setup do
+      self.request = TestRequest.new(:xhr => false)
+      self.response = TestResponse.new
+      use_javascript_for "something"
+    end
+
     should "set the corresponding body class" do
       assert_equal "with-js-something", javascript_feature_classes
+    end
+
+    should 'not modify the headers' do
+      assert_equal({'Content-Type' => 'text/html'}, response.headers)
+    end
+  end
+
+  context 'when a JavaScript feature is enabled during an XHR request' do
+    setup do
+      self.request = TestRequest.new(:xhr => true)
+      self.response = TestResponse.new
+      use_javascript_for "something"
+      use_javascript_for "something_else"
+    end
+
+    should 'modify the headers' do
+      assert_equal({'Content-Type' => 'text/html', 'X-JavascriptFeatures-Init' => 'something something_else'}, response.headers)
     end
   end
 

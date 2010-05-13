@@ -4,6 +4,10 @@ require 'webrick'
 
 require 'javascript_features'
 
+class Test::Unit::TestCase
+  attr_accessor :request, :response
+end
+
 module Rails
   def self.root
     File.join(File.dirname(__FILE__), 'fixtures')
