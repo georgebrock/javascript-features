@@ -1,8 +1,6 @@
 - Cache control headers in middleware
 - Cache busting query string based on file contents in include_javascript_features
 
-- Handle use_javascript_for calls in templates used by XHR requests
-
 - Rails generator for new features
-- Test helper to JSLint the feature files
+- Test case class for Harmony setup + JSLint
 - Readme file
