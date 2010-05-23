@@ -72,6 +72,37 @@ If you load some HTML via AJAX and inject it into your page, the relevant JavaSc
           }
         };
 
+## Testing ##
+
+There is some testing support built into Features.  You can use the `JavascriptFeatures::TestCase` class as the basis of JavaScript tests. It's farily basic at the moment, but should provide enough to get started.  The main features are demonstrated in this example test case:
+
+    class WidgetTest < JavascriptFeatures::TestCase
+    
+      # Write some HTML for the test case to work with, this is required.
+      uses_html_body{ '<div class="widget"></div>' }
+      
+      # Optionally specify which folder features should be loaded from. The default is 'main'
+      uses_feature_package 'my_features'
+      
+      # Optionally specify which feature(s) to initialise. The default is extracted from the name of
+      # the test class, e.g. 'WidgetTest' would become 'widget'
+      tests_feature 'feature'
+      
+      # Use stubs_http_request to test features that use AJAX
+      stubs_http_request '/foo', :body => 'Some words', :headers => {'Content-Type' => 'text/plain'}
+      
+      # Run JavaScript using execute_js
+      def test_should_update_the_contents_of_the_widget
+        assert_equal 'hello', execute_js(' jQuery("widget").text() ')
+      end
+      
+      # Count elements in the page using assert_selector_count
+      def test_should_add_the_enhanced_class_to_the_widget
+        assert_selector_count 1, '.widget.enhanced'
+      end
+      
+    end
+
 ## Other bits and bobs ##
 
 *  You can created multiple sets of features.  Just put them in different sub-folders and then pass the name of the folder to `include_javascript_features`, e.g. you can include the features from `/public/javascripts/foo` by calling `include_javascript_features('foo')`
