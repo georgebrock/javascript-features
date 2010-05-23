@@ -1,5 +1,11 @@
-- Cache control headers in middleware
-- Cache busting query string based on file contents in include_javascript_features
+- Better caching
+  - Cache control headers in middleware
+  - Cache busting query string based on file contents in include_javascript_features
 
 - Rails generator for new features
-- Test case class for Harmony setup + JSLint
+
+- Improve TestCase class
+  - Support in stubs_http_request for specifying feature names to be initalised (i.e. set the X-JavascriptFeatures-Init header without explicitly naming it)
+  - attr_accessors for the HTML, Harmony page etc.
+  - Helper methods to trigger actions, like clicking on buttons
+  - Assertions for leaving the page (by GET or POST)
