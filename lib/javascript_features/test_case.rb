@@ -41,7 +41,7 @@ module JavascriptFeatures
           self.class.feature_names.each{ |f| self.class.use_javascript_for f }
           @html = yield.strip
 
-          server_config = {:BindAddress => '0.0.0.0', :Port => 8076}
+          server_config = {:BindAddress => '0.0.0.0', :Port => 8076, :AccessLog => [], :Logger => WEBrick::Log::new('/dev/null', 7)}
           @server = ::WEBrick::HTTPServer.new(server_config)
           @server.mount('/', JavascriptFeatures::TestCase::Servlet, self.class.server_pages.merge('/index.html' => @html))
           Thread.new{ @server.start }
