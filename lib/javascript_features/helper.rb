@@ -12,7 +12,8 @@ module JavascriptFeatures
     end
 
     def include_javascript_features(package = 'main')
-      %Q{<script type="text/javascript" src="/javascripts/packaged/#{package}.js"></script>}
+      query = Compiler.package_modified_time(package).to_i
+      %Q{<script type="text/javascript" src="/javascripts/packaged/#{package}.js?#{query}"></script>}
     end
 
   end

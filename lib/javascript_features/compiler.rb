@@ -13,6 +13,10 @@ module JavascriptFeatures
       minified || compiled
     end
 
+    def self.package_modified_time(package = 'main')
+      files_for_package(package).map{|f| File.new(f).mtime }.max
+    end
+
   private
     def self.files_for_package(package)
       lib_files = [File.join(File.dirname(__FILE__), *%w[ .. .. assets jquery.js ])] + Dir.glob(Rails.root + '/public/javascripts/lib/**/*.js')

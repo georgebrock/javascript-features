@@ -83,4 +83,16 @@ class HelperTest < Test::Unit::TestCase
       assert_match %r{/javascripts/packaged/alternative\.js}, @script_tag
     end
   end
+
+  context 'including the packaged JavaScript after one of the files has been modified' do
+    setup do
+      @before_modified = include_javascript_features
+      FileUtils.touch File.join(Rails.root, %w[ public javascripts main my_feature.js ])
+      @after_modified = include_javascript_features
+    end
+
+    should 'include different query strings to avoid caching' do
+      assert @before_modified != @after_modified, "Expected #{@before_modified.inspect} and #{@after_modified.inspect} to be different"
+    end
+  end
 end
