@@ -4,8 +4,9 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
 
 ## Using it ##
 
-1.  Install the gem: `gem install javascript_features`
-2.  Include the JavaScript in your layout, e.g. in ERB:
+1.  Add the gem to your Gemfile: `gem 'javascript_features'`
+2.  Add the middleware to your Rack stack: `use Rack::JavascriptFeatures`
+3.  Include the JavaScript in your layout, e.g. in ERB:
 
         <html>
           <head>
@@ -16,8 +17,8 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
           </body>
         </html>
 
-3.  Add any jQuery plugins you want to use. These should live in `/public/javascripts/lib`
-4.  Start writing JavaScript features. Each should have its own file in `/public/javascripts/main` and should look like this:
+4.  Add any jQuery plugins you want to use. These should live in `/public/javascripts/lib`
+5.  Start writing JavaScript features. Each should have its own file in `/public/javascripts/main` and should look like this:
 
         Features.my_feature = {
           init: function() {
@@ -29,7 +30,7 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
           }
         };
 
-5.  Within your templates, activate specific features by called `<% use_javascript_for :my_feature %>` to make sure the `init` function is called.
+6.  Within your templates, activate specific features by called `<% use_javascript_for :my_feature %>` to make sure the `init` function is called.
 
 ## Working with AJAX ##
 
