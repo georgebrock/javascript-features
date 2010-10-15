@@ -1,6 +1,6 @@
 - Better caching
   - Cache control headers in middleware
-  - Cache busting query string based on file contents in include_javascript_features
+  - Base cache busting query string on directory mtimes so there are less lookups (assuming this isn't just an OSX thing)
 
 - Rails generator for new features
 
