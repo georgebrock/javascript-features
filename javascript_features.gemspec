@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency('redgreen')
   s.add_development_dependency('rack-test')
   s.add_development_dependency('jslint_on_rails')
+  s.add_development_dependency('activesupport')
+  s.add_development_dependency('json')
 end
