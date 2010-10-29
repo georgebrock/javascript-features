@@ -1,9 +1,7 @@
-require 'shoulda'
-require 'redgreen' unless ENV["TM_PID"]
-require 'webrick'
-require 'active_support'
-
-require 'javascript_features'
+require 'rubygems'
+require 'yaml'
+require 'bundler'
+Bundler.require(:default, :development)
 
 class Test::Unit::TestCase
   attr_accessor :request, :response

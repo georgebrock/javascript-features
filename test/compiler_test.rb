@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'jsmin'
 require File.join(File.dirname(__FILE__), *%w[test_helper])
 

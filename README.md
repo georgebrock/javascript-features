@@ -30,7 +30,7 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
           }
         };
 
-6.  Within your templates, activate specific features by called `<% use_javascript_for :my_feature %>` to make sure the `init` function is called.
+6.  Within your templates, activate specific features by called `<% use_javascript_for :my_feature %>` to make sure the `init` function is called. You can also specify several features at once: `<% use_javascript_for :first_feature, :second_feature %>`.
 
 ## Working with AJAX ##
 

@@ -1,9 +1,9 @@
 module JavascriptFeatures
   module Helper
 
-    def use_javascript_for(feature)
+    def use_javascript_for(*features)
       @javascript_features ||= []
-      @javascript_features << feature.to_s
+      @javascript_features += features.map(&:to_s)
       response.headers['X-JavascriptFeatures-Init'] = @javascript_features.uniq.join(' ') if request && request.xhr?
     end
 
