@@ -9,7 +9,7 @@ end
 
 module Rails
   def self.root
-    File.join(File.dirname(__FILE__), 'fixtures')
+    File.join(File.dirname(__FILE__), 'fixtures') + '/'
   end
 
   def self.backtrace_cleaner
