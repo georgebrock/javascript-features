@@ -8,8 +8,16 @@ module Rack
     end
 
     def call(env)
-      if javascript = get_javascript(env)
-        [200, {"Content-Type" => "text/javascript", "Cache-Control" => "private"}, [javascript]]
+      request = Rack::Request.new(env)
+
+      if package = package_for_path(request.path)
+        etag = package_etag(package)
+        if etag == env['HTTP_IF_NONE_MATCH']
+          [304, {}, []]
+        else
+          javascript = package_javascript(package)
+          [200, {"Content-Type" => "text/javascript", "Cache-Control" => "private", "ETag" => etag}, [javascript]]
+        end
       else
         @app.call(env)
       end
@@ -17,11 +25,19 @@ module Rack
 
   private
 
-    def get_javascript(env)
-      relevant_url = Rack::Request.new(env).path =~ %r{javascripts/packaged/([^/]+)\.js}
+    def package_for_path(path)
+      relevant_url = path =~ %r{javascripts/packaged/([^/]+)\.js}
       package_name = relevant_url && $1
       real_package = package_name && ::File.exists?(::File.join(Rails.root, 'public', 'javascripts', package_name))
-      return false unless relevant_url and real_package
+      real_package && package_name
+    end
+
+    def package_etag(package_name)
+      mtime = ::JavascriptFeatures::Compiler.package_modified_time(package_name)
+      etag = Digest::MD5.hexdigest("#{package_name}/#{mtime.to_i}")
+    end
+
+    def package_javascript(package_name)
       ::JavascriptFeatures::Compiler.compile(:package => package_name)
     end
 

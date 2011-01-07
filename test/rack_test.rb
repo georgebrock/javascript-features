@@ -32,6 +32,28 @@ class RackTest < Test::Unit::TestCase
     end
   end
 
+  context "when the main JavaScript package is being requested with a valid ETag" do
+    setup do
+      get '/javascripts/packaged/main.js'
+      assert_not_nil etag = last_response.headers['ETag'], 'Expected an ETag'
+      get '/javascripts/packaged/main.js', {}, {'HTTP_IF_NONE_MATCH' => etag}
+    end
+
+    should "respond with 'not modified'" do
+      assert_equal 304, last_response.status
+    end
+  end
+
+  context "when the main JavaScript package is being requested with a valid ETag" do
+    setup do
+      get '/javascripts/package/main.js', {}, {'HTTP_IF_NONE_MATCH' => '12345'}
+    end
+
+    should "respond with some JavaScript" do
+      assert_equal 200, last_response.status
+    end
+  end
+
   context "when an alternative JavaScript package is being requested" do
     setup do
       get '/javascripts/packaged/alternative.js'
