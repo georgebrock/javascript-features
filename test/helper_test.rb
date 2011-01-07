@@ -70,6 +70,11 @@ class HelperTest < Test::Unit::TestCase
     end
   end
 
+  should "allow to pass several features at one call" do
+    use_javascript_for "something", "something-else"
+    assert_equal "with-js-something with-js-something-else", javascript_feature_classes
+  end
+
   context 'including the packaged JavaScript' do
     setup{ @script_tag = include_javascript_features }
     should 'write a script tag containing the correct URL' do
