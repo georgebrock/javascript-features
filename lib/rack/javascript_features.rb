@@ -3,8 +3,11 @@ require 'javascript_features'
 module Rack
   class JavascriptFeatures
 
-    def initialize(app)
+    DEFAULT_OPTIONS = {:minify => true}
+
+    def initialize(app, options = {})
       @app = app
+      @options = DEFAULT_OPTIONS.merge(options)
     end
 
     def call(env)
@@ -38,7 +41,7 @@ module Rack
     end
 
     def package_javascript(package_name)
-      ::JavascriptFeatures::Compiler.compile(:package => package_name)
+      ::JavascriptFeatures::Compiler.compile(:package => package_name, :minify => @options[:minify])
     end
 
   end
