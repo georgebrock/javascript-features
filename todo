@@ -1,5 +1,0 @@
-- Better caching
-  - Cache control headers in middleware
-  - Base cache busting query string on directory mtimes so there are less lookups (assuming this isn't just an OSX thing)
-
-- Rails generator for new features
