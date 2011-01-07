@@ -3,9 +3,3 @@
   - Base cache busting query string on directory mtimes so there are less lookups (assuming this isn't just an OSX thing)
 
 - Rails generator for new features
-
-- Improve TestCase class
-  - Support in stubs_http_request for specifying feature names to be initalised (i.e. set the X-JavascriptFeatures-Init header without explicitly naming it)
-  - attr_accessors for the HTML, Harmony page etc.
-  - Helper methods to trigger actions, like clicking on buttons
-  - Assertions for leaving the page (by GET or POST)

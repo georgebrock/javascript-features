@@ -75,34 +75,9 @@ If you load some HTML via AJAX and inject it into your page, the relevant JavaSc
 
 ## Testing ##
 
-There is some testing support built into Features.  You can use the `JavascriptFeatures::TestCase` class as the basis of JavaScript tests. It's farily basic at the moment, but should provide enough to get started.  The main features are demonstrated in this example test case:
+The `JavascriptFeatures::TestCase` class is used by the gem to test it's own JavaScript. If you want to test your JavaScript within a minimal HTML page that is isolated from your application then you might also want to use this in you applications. Of course, just because your JavaScript works with a minimal doesn't mean you application's markup hasn't changed and introduced a regression. In most cases it's probably more sensible to test your JavaScript in the context of a real page in your application with something like [HolyGrail](https://github.com/georgebrock/holygrail) or [Selenium](http://seleniumhq.org/).
 
-    class WidgetTest < JavascriptFeatures::TestCase
-    
-      # Write some HTML for the test case to work with, this is required.
-      uses_html_body{ '<div class="widget"></div>' }
-      
-      # Optionally specify which folder features should be loaded from. The default is 'main'
-      uses_feature_package 'my_features'
-      
-      # Optionally specify which feature(s) to initialise. The default is extracted from the name of
-      # the test class, e.g. 'WidgetTest' would become 'widget'
-      tests_feature 'feature'
-      
-      # Use stubs_http_request to test features that use AJAX
-      stubs_http_request '/foo', :body => 'Some words', :headers => {'Content-Type' => 'text/plain'}
-      
-      # Run JavaScript using execute_js
-      def test_should_update_the_contents_of_the_widget
-        assert_equal 'hello', execute_js(' jQuery("widget").text() ')
-      end
-      
-      # Count elements in the page using assert_selector_count
-      def test_should_add_the_enhanced_class_to_the_widget
-        assert_selector_count 1, '.widget.enhanced'
-      end
-      
-    end
+See `javascript-features/test/javacript_test.rb` and `xhr_test.rb` for examples.
 
 ## Other bits and bobs ##
 
