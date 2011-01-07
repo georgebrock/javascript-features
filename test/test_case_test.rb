@@ -8,7 +8,7 @@ class TestCaseTest < JavascriptFeatures::TestCase
   end
 
   should 'include the main JS package' do
-    assert_match %r{<script [^>]*src="/javascripts/packaged/main\.js"}, @html
+    assert_match %r{<script [^>]*src="/javascripts/packaged/main\.js(\?\d+)?"}, @html
   end
 
   should 'take the enabled feature name from the class name' do
