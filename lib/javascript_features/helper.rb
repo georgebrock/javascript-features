@@ -13,7 +13,12 @@ module JavascriptFeatures
 
     def include_javascript_features(package = 'main')
       query = Compiler.package_modified_time(package).to_i
-      %Q{<script type="text/javascript" src="/javascripts/packaged/#{package}.js?#{query}"></script>}
+      tag = %Q{<script type="text/javascript" src="/javascripts/packaged/#{package}.js?#{query}"></script>}
+      if tag.respond_to?(:html_safe)
+        tag.html_safe
+      else
+        tag
+      end
     end
 
   end
