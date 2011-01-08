@@ -73,6 +73,8 @@ If you load some HTML via AJAX and inject it into your page, the relevant JavaSc
           }
         };
 
+    When the init function is called on DOM ready, the whole document will be passed as context.
+
 ## Testing ##
 
 The `JavascriptFeatures::TestCase` class is used by the gem to test it's own JavaScript. If you want to test your JavaScript within a minimal HTML page that is isolated from your application then you might also want to use this in you applications. Of course, just because your JavaScript works with a minimal doesn't mean you application's markup hasn't changed and introduced a regression. In most cases it's probably more sensible to test your JavaScript in the context of a real page in your application with something like [HolyGrail](https://github.com/georgebrock/holygrail) or [Selenium](http://seleniumhq.org/).
