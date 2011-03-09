@@ -11,8 +11,8 @@ module JavascriptFeatures
       (@javascript_features || []).uniq.map{ |feature| "with-js-#{feature.downcase}" }.join(" ")
     end
 
-    def include_javascript_features(package = 'main')
-      query = Compiler.package_modified_time(package).to_i
+    def include_javascript_features(package = 'main', options = {})
+      query = Compiler.package_modified_time(package, options).to_i
       tag = %Q{<script type="text/javascript" src="/javascripts/packaged/#{package}.js?#{query}"></script>}
       if tag.respond_to?(:html_safe)
         tag.html_safe
