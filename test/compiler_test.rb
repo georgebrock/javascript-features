@@ -6,7 +6,6 @@ class CompilerTest < Test::Unit::TestCase
 
   def setup
     common_files = [
-      File.join(File.dirname(__FILE__), *%w[ .. assets jquery.js ]),
       File.join(Rails.root, *%w[ public javascripts lib jquery_plugin.js ]),
       File.join(File.dirname(__FILE__), *%w[ .. assets init.js ])
     ]

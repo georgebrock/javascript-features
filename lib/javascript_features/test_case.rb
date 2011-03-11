@@ -43,7 +43,11 @@ module JavascriptFeatures
 
           server_config = {:BindAddress => '0.0.0.0', :Port => 8076, :AccessLog => [], :Logger => WEBrick::Log::new('/dev/null', 7)}
           @server = ::WEBrick::HTTPServer.new(server_config)
-          @server.mount('/', JavascriptFeatures::TestCase::Servlet, self.class.server_pages.merge('/index.html' => @html))
+          pages = self.class.server_pages.merge(
+                    '/index.html' => @html,
+                    '/jquery.js' => File.read(File.expand_path('../../../assets/jquery.js', __FILE__))
+                  )
+          @server.mount('/', JavascriptFeatures::TestCase::Servlet, pages)
           Thread.new{ @server.start }
 
           @page = Harmony::Page.fetch("http://#{server_config[:BindAddress]}:#{server_config[:Port]}/index.html")
@@ -62,6 +66,7 @@ module JavascriptFeatures
             <html lang="en">
               <head>
                 <title>Test page</title>
+                <script src='/jquery.js'></script>
                 #{include_javascript_features(feature_package)}
               </head>
               <body class="#{javascript_feature_classes}">
