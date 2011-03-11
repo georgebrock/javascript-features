@@ -15,6 +15,7 @@ Features.init = function(context, use_feature) {
 
 jQuery(function($) {
   $("body").ajaxComplete(function(event, xhr, options) {
+    if(xhr.readyState !== 4){ return; }
     var init_features = (xhr.getResponseHeader("X-JavascriptFeatures-Init") || "").toLowerCase().split(" ");
     var context = $(options.context || document);
     Features.init(context, function(feature) {
