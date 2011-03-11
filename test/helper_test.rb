@@ -38,6 +38,11 @@ class HelperTest < Test::Unit::TestCase
     should 'not modify the headers' do
       assert_equal({'Content-Type' => 'text/html'}, response.headers)
     end
+
+    should 'be able to check that it is enabled' do
+      assert use_javascript_for?('something')
+      assert !use_javascript_for?('something-else')
+    end
   end
 
   context 'when a JavaScript feature is enabled during an XHR request' do
