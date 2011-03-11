@@ -4,4 +4,4 @@ module JavascriptFeatures
   autoload :TestCase, 'javascript_features/test_case'
 end
 
-ActionController::Base.send(:helper, JavascriptFeatures::Helper) if defined?(ActionController)
+ActionController::Base.send(:include, JavascriptFeatures::Helper) if defined?(ActionController)
