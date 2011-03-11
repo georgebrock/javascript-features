@@ -66,11 +66,12 @@ module JavascriptFeatures
             <html lang="en">
               <head>
                 <title>Test page</title>
-                <script src='/jquery.js'></script>
-                #{include_javascript_features(feature_package)}
               </head>
               <body class="#{javascript_feature_classes}">
                 #{yield.strip}
+
+                <script src='/jquery.js'></script>
+                #{include_javascript_features(feature_package)}
               </body>
             </html>
           %

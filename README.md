@@ -10,10 +10,11 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
 
         <html>
           <head>
-            <%= include_javascript_features %>
+            …
           </head>
           <body class="<%= javascript_feature_classes %>">
             …
+            <%= include_javascript_features %>
           </body>
         </html>
 
