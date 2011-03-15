@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    javascript_features (0.0.1)
+    javascript_features (1.0.1)
       harmony
       jsmin
 
