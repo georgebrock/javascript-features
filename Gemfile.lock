@@ -31,10 +31,8 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  harmony
   javascript_features!
   jslint_on_rails
-  jsmin
   json
   rack-test
   redgreen
