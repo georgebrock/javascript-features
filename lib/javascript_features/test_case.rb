@@ -1,5 +1,10 @@
 require 'active_support/test_case'
-require 'harmony'
+
+begin
+  require 'harmony'
+rescue LoadError
+  raise 'You must gem install harmony to use javascript-features test case'
+end
 
 module JavascriptFeatures
   class TestCase < ::ActiveSupport::TestCase
