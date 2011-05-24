@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'javascript_features'
-  s.version = '1.0.1'
-  s.date = '2011-03-15'
+  s.version = '1.0.1.reevoo'
+  s.date = '2011-05-24'
 
   s.authors = ['George Brocklehurst']
   s.email = 'george.brocklehurst@gmail.com'
