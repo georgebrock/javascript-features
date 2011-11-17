@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'javascript_features'
-  s.version = '1.0.1'
-  s.date = '2011-03-15'
+  s.version = '1.0.1.reevoo'
+  s.date = '2011-05-24'
 
   s.authors = ['George Brocklehurst']
   s.email = 'george.brocklehurst@gmail.com'
@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.summary = 'Structured, unobtrusive JavaScript for Rails applications'
 
   s.add_dependency('jsmin')
-  s.add_dependency('harmony')
 
+  s.add_development_dependency('harmony')
   s.add_development_dependency('shoulda')
   s.add_development_dependency('redgreen')
   s.add_development_dependency('rack-test')
