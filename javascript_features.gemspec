@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'javascript_features'
-  s.version = '1.0.1.reevoo'
+  s.version = '1.0.2'
   s.date = '2011-05-24'
 
   s.authors = ['George Brocklehurst']
