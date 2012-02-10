@@ -14,7 +14,7 @@ module JavascriptFeatures
     end
 
     def self.package_modified_time(package = 'main')
-      files_for_package(package).map{|f| File.new(f).mtime }.max
+      files_for_package(package).map{|f| File.mtime(f) }.max
     end
 
   private
