@@ -1,2 +1,1 @@
-- Handle everything in Rails 3's rails.js (and initialise by default in Rails 3 apps)
 - Let JavaScript use camelCaseVariables and ruby use underscored_variables

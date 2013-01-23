@@ -1,24 +1,22 @@
+$:.push File.expand_path("../lib", __FILE__)
+require "javascript_features/version"
 Gem::Specification.new do |s|
-  s.name = 'javascript_features'
-  s.version = '1.0.3'
+  s.name        = "javascript_features"
+  s.version     = JavascriptFeatures::VERSION
+  s.platform    = Gem::Platform::RUBY
   s.date = '2011-05-24'
 
   s.authors = ['George Brocklehurst']
   s.email = 'george.brocklehurst@gmail.com'
   s.homepage = 'http://georgebrock.com'
-
-  s.files = Dir['{test,lib,rails,assets}/**/*']
-  s.require_paths = ['lib']
-  s.rubygems_version = '1.3.6'
   s.summary = 'Structured, unobtrusive JavaScript for Rails applications'
 
-  s.add_dependency('jsmin')
+  s.files        = `git ls-files`.split("\n")
+  s.add_dependency "rails", "~> 3.2.11"
+  s.add_dependency "jquery-rails"
 
-  s.add_development_dependency('harmony')
-  s.add_development_dependency('shoulda')
-  s.add_development_dependency('redgreen')
-  s.add_development_dependency('rack-test')
-  s.add_development_dependency('jslint_on_rails')
-  s.add_development_dependency('activesupport')
-  s.add_development_dependency('json')
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "poltergeist"
+  s.add_development_dependency "simple_jshint"
 end

@@ -5,8 +5,7 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
 ## Using it ##
 
 1.  Add the gem to your Gemfile: `gem 'javascript_features'`
-2.  Add the middleware to your Rack stack: `use Rack::JavascriptFeatures`
-3.  Include the JavaScript in your layout, e.g. in ERB:
+2.  Include the javascript_feature_classes helper in your layout, e.g. in ERB:
 
         <html>
           <head>
@@ -14,12 +13,19 @@ Features is an opinionated framework for structured, unobtrusive, jQuery-based J
           </head>
           <body class="<%= javascript_feature_classes %>">
             …
-            <%= include_javascript_features %>
           </body>
         </html>
+3.  Use the asset pipeline to include Jquery and JavaScript Features,
+    e.g.
 
-4.  Add any jQuery plugins you want to use. These should live in `/public/javascripts/lib`
-5.  Start writing JavaScript features. Each should have its own file in `/public/javascripts/main` and should look like this:
+        //= require jquery
+        //= require javascript_features
+
+4.  Add any jQuery plugins you want to use. They can live anywhere you
+    want, but `vendor/assets/javascripts` or `lib/assets/javascripts`
+are good choices.  Make sure you include you plugins in your manifest.
+5.  Start writing JavaScript features. They can live anywhere but
+    `app/assets/javascripts` is a good place.
 
         Features.my_feature = {
           init: function() {
@@ -78,13 +84,17 @@ If you load some HTML via AJAX and inject it into your page, the relevant JavaSc
 
 ## Testing ##
 
-The `JavascriptFeatures::TestCase` class is used by the gem to test it's own JavaScript. If you want to test your JavaScript within a minimal HTML page that is isolated from your application then you might also want to use this in you applications. Of course, just because your JavaScript works with a minimal doesn't mean you application's markup hasn't changed and introduced a regression. In most cases it's probably more sensible to test your JavaScript in the context of a real page in your application with something like [HolyGrail](https://github.com/georgebrock/holygrail) or [Selenium](http://seleniumhq.org/).
+Javascript Features is tested with capybara and poltergeist. To run the
+tests you may need to install PhantomJS, on a mac `brew install
+phantomjs` will do the trick. There are Binary packages for Windows and Linux
+at [phantom.js.org](http://phantomjs.org)
 
-See `javascript-features/test/javacript_test.rb` and `xhr_test.rb` for examples.
-
-## Other bits and bobs ##
-
-*  You can created multiple sets of features.  Just put them in different sub-folders and then pass the name of the folder to `include_javascript_features`, e.g. you can include the features from `/public/javascripts/foo` by calling `include_javascript_features('foo')`
+## Upgrading ##
+If you are upgrading from JavaScript Features 1.0.3 you will need to
+move your JavaScripts to `/app/assets` so the asset pipeline can package
+them. The `include_javascript_features` helper will now raise an
+exception to remind you to use the asset pipeline and include your
+javascript with `javascript_include_tag`.
 
 ## License ##
 
