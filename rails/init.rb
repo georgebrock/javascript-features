@@ -1,1 +1,0 @@
-require 'javascript_features'

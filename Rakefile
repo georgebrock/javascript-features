@@ -1,14 +1,14 @@
-require "rubygems"
-require "rake/testtask"
-
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList["test/**/*_test.rb"]
-  t.verbose = true
+#!/usr/bin/env rake
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
-task :default => ["test"]
+Bundler::GemHelper.install_tasks
 
-task :gem do
-  exec 'gem build javascript_features.gemspec'
-end
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dummy</title>
+  <%= include_javascript_features :application %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= javascript_feature_classes %>">
+
+<%= yield %>
+
+</body>
+</html>

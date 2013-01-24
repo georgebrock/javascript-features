@@ -2,3 +2,7 @@
 .rvmrc
 .bundle
 examples/
+.DS_Store
+Gemfile.lock
+spec/dummy/log/*
+spec/dummy/tmp/*
