@@ -92,9 +92,11 @@ at [phantom.js.org](http://phantomjs.org)
 ## Upgrading ##
 If you are upgrading from JavaScript Features 1.0.3 you will need to
 move your JavaScripts to `/app/assets` so the asset pipeline can package
-them. The `include_javascript_features` helper will now raise an
-exception to remind you to use the asset pipeline and include your
-javascript with `javascript_include_tag`.
+them. The `include_javascript_features` is now an alias for
+`javascript_include_tag`, adding an `index.js` with `//= require_tree .`
+in each feature directory will package your assets in the same way,
+however you may prefer to include your features in your application.js
+manifiest to reduce requests.
 
 ## License ##
 
