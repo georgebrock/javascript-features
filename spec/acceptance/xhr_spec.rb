@@ -3,7 +3,7 @@ require 'spec_helper'
 
 feature "Javascript Features" do
   background do
-    visit '/xhrtests'
+    visit '/tests/xhrtest'
   end
 
   scenario 'complete the XHR request' do
@@ -19,7 +19,7 @@ feature "Javascript Features" do
   end
 
   scenario 're-run global initialisation code when the XHR completes, limited to the scope of the XHR content' do
-    page.should have_selector('.real.xhr-response .touched-by-global-init', :count => 1)
-    page.should have_selector('.unrelated.xhr-response .touched-by-global-init', :count => 1)
+    page.should have_selector('.real.xhr-response .touched-by-global-init')
+    page.should have_selector('.unrelated.xhr-response .touched-by-global-init')
   end
 end
