@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 ENV["RAILS_ENV"] ||= 'test'
-require_relative './dummy/config/environment'
+require 'dummy/config/environment'
 RSpec.configure do |config|
   config.order = "random"
 end

@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-require_relative '../../lib/javascript_features/helper'
+require './lib/javascript_features/helper'
 include JavascriptFeatures::Helper
 
 describe JavascriptFeatures::Helper do
@@ -52,12 +52,6 @@ describe JavascriptFeatures::Helper do
       javascript_feature_classes.should == "with-js-something with-js-something-else"
     end
   end
-
-  #describe '#include_javascript_features' do
-    #it 'raises an error with a helpfull message' do
-      #expect { include_javascript_features }.to raise_error(RuntimeError)
-    #end
-  #end
 end
 
 class Request
