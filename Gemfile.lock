@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    javascript_features (1.0.1)
-      harmony
+    javascript_features (1.0.3)
       jsmin
 
 GEM
@@ -19,7 +18,7 @@ GEM
     jslint_on_rails (1.0.3)
     jsmin (1.0.1)
     json (1.4.6)
-    rack (1.2.1)
+    rack (2.0.8)
     rack-test (0.5.6)
       rack (>= 1.0)
     redgreen (1.2.2)
@@ -31,6 +30,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  harmony
   javascript_features!
   jslint_on_rails
   json
